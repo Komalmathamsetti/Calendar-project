@@ -147,10 +147,3 @@ This project was developed as part of a **Frontend Engineering Challenge**, focu
 
 ---
 
-## 📧 Contact
-
-If you have any feedback or suggestions, feel free to reach out!
-
----
-
-⭐ If you like this project, consider giving it a star!
