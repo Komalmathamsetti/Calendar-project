@@ -1,42 +1,3 @@
-/*"use client";
-
-import { useState } from "react";
-
-export default function NotesPanel({ keyName }) {
-  const [note, setNote] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem(keyName) || "";
-    }
-    return "";
-  });
-
-  const saveNote = () => {
-    localStorage.setItem(keyName, note);
-  };
-
-  return (
-    <div className="p-5 bg-white rounded-2xl shadow-lg border border-gray-200">
-      <h2 className="font-semibold mb-2 text-gray-800 text-lg">Notes</h2>
-
-      <textarea
-        className="w-full h-32 border border-gray-300 p-3 rounded-lg 
-        text-gray-800 placeholder-gray-400
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-        placeholder="Write your notes here..."
-      />
-
-      <button
-        onClick={saveNote}
-        className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg 
-        hover:bg-blue-600 transition-all shadow-md"
-      >
-        Save
-      </button>
-    </div>
-  );
-}*/
 "use client";
 
 import { useState, useCallback } from "react";
@@ -52,7 +13,6 @@ export default function NotesPanel({ month }) {
   const [savedMonth, setSavedMonth] = useState(month);
   const [saved, setSaved] = useState(false);
 
-  // Derive note from storage when month changes — no useEffect needed
   const displayNote = month === savedMonth ? note : getNote(keyName);
 
   const handleChange = (e) => {
@@ -70,35 +30,116 @@ export default function NotesPanel({ month }) {
   }, [keyName, displayNote, month]);
 
   return (
-    <div className="p-5 bg-white rounded-2xl shadow-lg border border-gray-200">
-      <div className="flex items-center justify-between mb-2">
-        <h2 className="font-semibold text-gray-800 text-lg">
-          Notes — {month}
-        </h2>
+    <div style={{
+      padding: "24px",
+      background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+      borderRadius: "20px",
+      boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+      border: "1px solid rgba(255,255,255,0.1)",
+      fontFamily: "'Segoe UI', sans-serif",
+    }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{
+            width: "10px", height: "10px", borderRadius: "50%",
+            background: "#00f5ff", boxShadow: "0 0 8px #00f5ff"
+          }} />
+          <h2 style={{
+            margin: 0,
+            fontSize: "18px",
+            fontWeight: "700",
+            color: "#00f5ff",
+            textShadow: "0 0 12px rgba(0,245,255,0.5)",
+            letterSpacing: "0.5px",
+          }}>
+            Notes — {month}
+          </h2>
+        </div>
+
         {saved && (
-          <span className="text-green-500 text-sm font-medium transition-opacity duration-300">
+          <span style={{
+            fontSize: "13px",
+            fontWeight: "600",
+            color: "#39ff14",
+            textShadow: "0 0 8px rgba(57,255,20,0.6)",
+            padding: "4px 10px",
+            background: "rgba(57,255,20,0.1)",
+            borderRadius: "20px",
+            border: "1px solid rgba(57,255,20,0.3)",
+          }}>
             ✓ Saved
           </span>
         )}
       </div>
 
+      {/* Textarea */}
       <textarea
-        className="w-full h-32 border border-gray-300 p-3 rounded-lg
-          text-gray-800 placeholder-gray-400
-          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         value={displayNote}
         onChange={handleChange}
         placeholder={`Write your notes for ${month} here...`}
+        style={{
+          width: "100%",
+          height: "140px",
+          background: "rgba(255,255,255,0.05)",
+          border: "1.5px solid rgba(0,245,255,0.3)",
+          borderRadius: "12px",
+          padding: "14px 16px",
+          fontSize: "15px",
+          fontWeight: "500",
+          color: "#ffffff",
+          lineHeight: "1.7",
+          resize: "vertical",
+          outline: "none",
+          boxSizing: "border-box",
+          fontFamily: "'Segoe UI', sans-serif",
+          caretColor: "#00f5ff",
+          transition: "border-color 0.2s, box-shadow 0.2s",
+        }}
+        onFocus={e => {
+          e.target.style.borderColor = "#00f5ff";
+          e.target.style.boxShadow = "0 0 0 3px rgba(0,245,255,0.15)";
+        }}
+        onBlur={e => {
+          e.target.style.borderColor = "rgba(0,245,255,0.3)";
+          e.target.style.boxShadow = "none";
+        }}
       />
 
-      <div className="flex items-center justify-between mt-3">
-        <span className="text-xs text-gray-400">
+      {/* Footer */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "12px" }}>
+        <span style={{
+          fontSize: "12px",
+          color: "#a78bfa",
+          fontWeight: "500",
+          letterSpacing: "0.3px",
+        }}>
           {displayNote.length} character{displayNote.length !== 1 ? "s" : ""}
         </span>
+
         <button
           onClick={saveNote}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg
-            hover:bg-blue-600 transition-all shadow-md"
+          style={{
+            background: "linear-gradient(135deg, #00f5ff, #a855f7)",
+            border: "none",
+            borderRadius: "10px",
+            padding: "9px 22px",
+            fontSize: "14px",
+            fontWeight: "700",
+            color: "#0f0f1a",
+            cursor: "pointer",
+            letterSpacing: "0.5px",
+            boxShadow: "0 4px 15px rgba(0,245,255,0.3)",
+            transition: "transform 0.15s, box-shadow 0.15s",
+          }}
+          onMouseEnter={e => {
+            e.target.style.transform = "translateY(-1px)";
+            e.target.style.boxShadow = "0 6px 20px rgba(0,245,255,0.5)";
+          }}
+          onMouseLeave={e => {
+            e.target.style.transform = "translateY(0)";
+            e.target.style.boxShadow = "0 4px 15px rgba(0,245,255,0.3)";
+          }}
         >
           Save
         </button>
