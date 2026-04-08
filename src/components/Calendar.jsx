@@ -38,8 +38,10 @@ export default function Calendar() {
       {/* CALENDAR */}
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
-        <HeaderImage month={monthText} />
-
+        <HeaderImage 
+          month={monthText} 
+          monthIndex={currentDate.getMonth()} 
+        />
         <MonthNavigator date={currentDate} setDate={setCurrentDate} />
 
         <div className="p-4">
