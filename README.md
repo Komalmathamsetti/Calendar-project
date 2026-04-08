@@ -29,6 +29,12 @@ This project focuses on clean UI, smooth interactions, and a great user experien
   * Dates in between
 * Smooth visual feedback
 
+### 🖼 Dynamic Hero Images (NEW ✨)
+
+* Each month displays a **different background image**
+* Automatically updates when navigating months
+* Smooth transition effect between images
+
 ### 📝 Notes Section
 
 * Add notes for each month
@@ -60,7 +66,7 @@ This project focuses on clean UI, smooth interactions, and a great user experien
 
 ## 📂 Project Structure
 
-```
+```id="n9h3a1"
 src/
   app/
     page.js
@@ -72,6 +78,11 @@ src/
     NotesPanel.jsx
   utils/
     dateUtils.js
+  public/
+    jan.jpg
+    feb.jpg
+    ...
+    dec.jpg
 ```
 
 ---
@@ -80,26 +91,26 @@ src/
 
 Clone the repository:
 
-```bash
-git clone https://github.com/your-username/your-repo-name.git
+```bash id="p4u9l2"
+git clone https://github.com/Komalmathamsetti/Calendar-project.git
 cd your-repo-name
 ```
 
 Install dependencies:
 
-```bash
+```bash id="l2x9mz"
 npm install
 ```
 
 Run the development server:
 
-```bash
+```bash id="z5d3kp"
 npm run dev
 ```
 
 Open in browser:
 
-```
+```id="q3z0tr"
 http://localhost:3000
 ```
 
@@ -107,7 +118,7 @@ http://localhost:3000
 
 ## 🧪 Build for Production
 
-```bash
+```bash id="3k9d1o"
 npm run build
 ```
 
@@ -117,8 +128,8 @@ npm run build
 
 * Clean and modern card-based design
 * Smooth hover and click interactions
-* Clear visual hierarchy
-* Accessible and readable layout
+* Dynamic visual experience with monthly images
+* Clear visual hierarchy and readability
 
 ---
 
@@ -127,6 +138,7 @@ npm run build
 * Building reusable React components
 * Managing state for date range selection
 * Working with date-fns for calendar logic
+* Implementing dynamic UI based on state
 * Designing responsive layouts with Tailwind CSS
 * Deploying production-ready apps using Vercel
 
@@ -137,13 +149,11 @@ npm run build
 * Dark mode support 🌙
 * Holiday/event markers 🎉
 * Drag-to-select date range
-* Animations and transitions ✨
+* Image-based theme color adaptation 🎨
 
 ---
 
 ## 🙌 Acknowledgement
 
 This project was developed as part of a **Frontend Engineering Challenge**, focusing purely on frontend skills, UI/UX, and component architecture.
-
----
 

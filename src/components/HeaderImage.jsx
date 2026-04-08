@@ -21,12 +21,12 @@ export default function HeaderImage({ monthIndex, month }) {
   return (
     <div className="relative h-56 w-full overflow-hidden">
       <Image
+        key={currentImage}   // 🔥 IMPORTANT FIX
         src={currentImage}
         alt="Calendar"
         fill
-        className="object-cover"
+        className="object-cover transition-all duration-500"
       />
-
       <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
 
       <div className="absolute bottom-4 right-4 text-white">
