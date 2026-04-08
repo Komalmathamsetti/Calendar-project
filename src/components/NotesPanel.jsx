@@ -3,7 +3,10 @@
 import { useState, useCallback } from "react";
 
 function getNote(keyName) {
-  return localStorage.getItem(keyName) || "";
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(keyName) || "";
+  }
+  return "";
 }
 
 const placeholderStyle = `
@@ -29,7 +32,9 @@ export default function NotesPanel({ month }) {
   };
 
   const saveNote = useCallback(() => {
-    localStorage.setItem(keyName, displayNote);
+  if (typeof window !== "undefined") {
+  localStorage.setItem(keyName, displayNote);
+  }
     setNote(displayNote);
     setSavedMonth(month);
     setSaved(true);
@@ -99,7 +104,7 @@ export default function NotesPanel({ month }) {
             padding: "14px 16px",
             fontSize: "15px",
             fontWeight: "500",
-            color: "#ffffff",
+            color: "#000000",
             lineHeight: "1.7",
             resize: "vertical",
             outline: "none",
