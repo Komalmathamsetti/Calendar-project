@@ -25,7 +25,7 @@ export default function HeaderImage({ monthIndex, month }) {
         src={currentImage}
         alt="Calendar"
         fill
-        className="object-cover transition-all duration-500"
+        className="object-cover transition-all duration-100"
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
 
