@@ -7,7 +7,7 @@ This project focuses on clean UI, smooth interactions, and a great user experien
 
 ## 🌐 Live Demo
 
-👉 https://calendar-project-one.vercel.app/
+👉 https://calendar-project-adg6.vercel.app/
 
 ---
 
